@@ -1,0 +1,38 @@
+router 0
+--------
+
+en 
+config t 
+int fa0/0
+ip add 30.0.0.1 255.0.0.0
+no shut
+exit
+int se0/0/0
+ip add 20.0.0.1 255.0.0.0
+no shut 
+exit
+ip route 0.0.0.0 0.0.0.0 se0/0/0
+int fa0/0
+ip nat inside
+exit
+int se0/0/0
+ip nat outside
+exit
+ip nat pool public 20.0.0.3 20.0.0.4 netmask 255.0.0.0
+access-list 1 permit 30.0.0.0 0.255.255.255
+ip nat inside source list 1 pool public 
+
+
+router 1
+-------------
+
+en 
+config t
+int se0/0/0
+ip add 20.0.0.2 255.0.0.0
+no shut
+exit
+int fa0/0
+ip add 10.0.0.1 255.0.0.0
+no shut
+exit

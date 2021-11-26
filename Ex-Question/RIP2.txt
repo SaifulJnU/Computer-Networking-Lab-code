@@ -1,0 +1,25 @@
+en
+config t
+int fa0/0
+ip address 30.0.0.1 255.0.0.0
+no shut
+exit
+int se0/0/0
+ip address 50.0.0.2 255.0.0.0
+no shut
+exit
+
+
+
+
+en
+config t
+int se0/0/1
+ip address 50.0.0.1 255.0.0.0
+no shut
+exit
+int se0/0/0
+ip address 40.0.0.2 255.0.0.0
+no shut
+exit
+

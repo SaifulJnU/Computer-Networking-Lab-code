@@ -1,0 +1,51 @@
+router 0
+--------
+en
+conf t
+int fa0/0
+ip add 200.136.2.1 255.255.255.252
+no shut
+exit
+int se0/0/0
+ip add 200.136.2.5 255.255.255.252
+no shut
+exit
+router rip
+network 200.136.2.0
+network 200.136.2.4
+exit
+
+router 1
+----------
+en
+conf t
+int se0/0/1
+ip add 200.136.2.9 255.255.255.252
+no shut
+exit
+int se0/0/0
+ip add 200.136.2.6 255.255.255.252
+no shut
+exit
+router rip
+network 200.136.2.4
+network 200.136.2.8
+exit
+
+
+router 2
+---------
+en
+conf t
+int fa0/0
+ip add 200.136.2.13 255.255.255.252
+no shut
+exit
+int se0/0/0
+ip add 200.136.2.10 255.255.255.252
+no shut
+exit
+router rip
+network 200.136.2.12
+network 200.136.2.8
+exit

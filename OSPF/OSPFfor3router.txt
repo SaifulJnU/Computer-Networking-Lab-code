@@ -1,0 +1,78 @@
+router 1
+----------
+en
+config t
+int fa0/0
+ip address 172.16.0.1 255.255.0.0
+no shut
+exit
+int se0/0
+ip address 192.168.1.1 255.255.255.0
+no shut
+exit
+int se0/1
+ip address 192.168.2.1 255.255.255.0
+no shut
+exit
+router ospf 10
+network 172.16.0.1 0.0.255.255 area 1
+network 192.168.1.1 0.0.0.255 area 1
+network 192.168.2.1 0.0.0.255 area 1
+exit
+
+
+router 2
+---------
+en
+config t
+int fa0/0
+ip address 172.17.0.1 255.255.0.0
+no shut
+exit
+int se0/0
+ip address 192.168.1.2 255.255.255.0
+no shut
+exit
+int se0/1
+ip address 192.168.3.1 255.255.255.0
+no shut
+exit
+router ospf 10
+network 172.17.0.1 0.0.255.255 area 1
+network 192.168.1.2 0.0.0.255 area 1
+network 192.168.3.1 0.0.0.255 area 1
+exit
+
+
+router 0
+-------------
+en
+config t
+int fa0/0
+ip address 172.18.0.1 255.255.0.0
+no shut
+exit
+int se0/0
+ip address 192.168.2.2 255.255.255.0
+no shut
+exit
+int se0/1
+ip address 192.168.3.2 255.255.255.0
+no shut
+exit
+router ospf 10
+network 172.18.0.1 0.0.255.255 area 1
+network 192.168.2.2 0.0.0.255 area 1
+network 192.168.3.2 0.0.0.255 area 1
+exit
+
+
+
+
+
+
+
+
+
+
+

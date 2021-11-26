@@ -1,0 +1,27 @@
+for left side
+-----------
+en
+config t
+int fa0/0
+ip add 192.168.1.1 255.255.255.0
+no shut
+exit
+do write memory
+ip dhcp pool dotNet1
+network 192.168.1.1 255.255.255.0
+exit
+
+
+for right side
+-------------
+
+en
+config t
+int fa0/1
+ip add 192.168.2.1 255.255.255.0
+no shut
+exit
+do write memory
+ip dhcp pool dotNet2
+network 192.168.2.1 255.255.255.0
+exit
